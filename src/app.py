@@ -46,7 +46,7 @@ class TorrentApp:
         qb_user, qb_pwd, qb_host, qb_port)
 
         # Collecting Torrents
-        categories = QbTorrentClient.print(self.qb_client)
+        QbTorrentClient.reannounce(self.qb_client)
 
     def add_routes(self):
         @self.app.route('/index', methods=['GET'])
