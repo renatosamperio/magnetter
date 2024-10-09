@@ -24,8 +24,8 @@ class TorrentApp:
 
         # Start the periodic task every 24 hours
         print("Registering periodic task...")
-        # self.scheduler.add_job(func=self.daily_task, trigger="interval", hours=24)
-        self.scheduler.add_job(func=self.daily_task, trigger="interval", minutes=2)
+        self.scheduler.add_job(func=self.daily_task, trigger="interval", hours=24)
+        # self.scheduler.add_job(func=self.daily_task, trigger="interval", minutes=2)
         self.scheduler.start()
 
         # Ensure scheduler is shutdown properly on exit
@@ -68,8 +68,10 @@ def run(options):
     app = TorrentApp()
 
     if not options.dry_run:
+        print("Running dry run service")
         app.daily_task()
     else:
+        print("Running daily service")
         app.run()
 
 if __name__ == "__main__":

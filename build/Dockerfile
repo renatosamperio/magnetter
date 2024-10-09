@@ -15,13 +15,6 @@ COPY ./build/requirements.txt /tmp
 RUN pip install -r /tmp/requirements.txt && \
     rm /tmp/requirements.txt
 
-WORKDIR /var/tmp
-RUN git clone https://github.com/v1k45/python-qBittorrent.git && \
-    cd python-qBittorrent && \
-    python setup.py install && \
-    cd .. && \
-    rm -rf python-qBittorren
-
 # Copy the requirements file and app files to the container
 COPY src /opt/magnetter
 
